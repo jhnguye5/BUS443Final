@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>BUS 443 Final Project Base</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width-device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'faculty/css/style.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<header>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<a class="navbar-brand" href="#">SKOOL</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'studentdetails' %}">Student Details</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'coursedetails' %}">Course Details</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'enrollment' %}">Enrollment</a>
+			</li>
+		</ul>
+		<ul class="navebar-nav">
+			{% if not user.is_authenticated %}
+				<ul class="navbar-nav px-3">
+					<li class="nav-item text=nowrap">
+						<a class="btn btn-light btn-sm" role="button" href="{% url 'login' %}">Log In</a>
+					</li>
+				</ul>
+			{% else %}
+				<ul class="navbar-nav">
+					<li class="nav-item text-nowrap">
+						<a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+				</ul>
+			{% endif %}
+		</ul>
+	</div>
+	</nav>
+</header>
+
+{% block container %}
+	<div>
+		{% block content %}
+		{% endblock %}
+	</div>
+{% endblock %}
+</body>
+</html>

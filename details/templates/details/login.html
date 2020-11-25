@@ -1,0 +1,23 @@
+{% extends "details/base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container" style="margin-top:100px">
+	<form method="post" action="{% url 'login' %}">
+		{% csrf_token %}
+		<table class="table">
+			{{ form }}
+		</table>
+		<input type ="submit" value="partake?">
+	</form>
+</div>
+
+<div class class="container">
+	</br>
+	<center>
+		<p>you must ignore the creature! quickly! log in today!</p>
+		<img src="{% static 'details/images/youfoundthecat.jpg' %}" alt="skool mascot, or should i say 'mascat'" width="200" height="300" align="center">
+	</center>
+</div>
+
+{% endblock %}
